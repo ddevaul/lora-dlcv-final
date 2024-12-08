@@ -86,12 +86,12 @@ def _shuffle(lis):
 def _get_cutout_holes(
     height,
     width,
-    min_holes=1,
-    max_holes=1,
-    min_height=64,
-    max_height=128,
-    min_width=64,
-    max_width=128,
+    min_holes=4,
+    max_holes=8,
+    min_height=16,
+    max_height=64,
+    min_width=16,
+    max_width=64,
 ):
     holes = []
     lower_bounded_height = height * 0.35
