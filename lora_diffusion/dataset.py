@@ -86,19 +86,23 @@ def _shuffle(lis):
 def _get_cutout_holes(
     height,
     width,
-    min_holes=8,
-    max_holes=32,
-    min_height=16,
+    min_holes=1,
+    max_holes=1,
+    min_height=64,
     max_height=128,
-    min_width=16,
+    min_width=64,
     max_width=128,
 ):
     holes = []
+    lower_bounded_height = height * 0.35
+    higher_bounded_height = height * 0.85
+    left_bound = width * 0.35
+    right_bound = width * 0.85
     for _n in range(random.randint(min_holes, max_holes)):
         hole_height = random.randint(min_height, max_height)
         hole_width = random.randint(min_width, max_width)
-        y1 = random.randint(0, height - hole_height)
-        x1 = random.randint(0, width - hole_width)
+        y1 = random.randint(int(lower_bounded_height), int(higher_bounded_height - hole_height))
+        x1 = random.randint(left_bound, int(right_bound - hole_width))
         y2 = y1 + hole_height
         x2 = x1 + hole_width
         holes.append((x1, y1, x2, y2))
