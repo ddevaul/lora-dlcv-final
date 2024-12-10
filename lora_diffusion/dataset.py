@@ -114,8 +114,6 @@ def _generate_random_mask(image):
     holes = _get_cutout_holes(mask.shape[1], mask.shape[2])
     for (x1, y1, x2, y2) in holes:
         mask[:, y1:y2, x1:x2] = 1.0
-    if random.uniform(0, 1) < 0.25:
-        mask.fill_(1.0)
     masked_image = image * (mask < 0.5)
     return mask, masked_image
 
