@@ -102,7 +102,7 @@ def _get_cutout_holes(
         hole_height = random.randint(min_height, max_height)
         hole_width = random.randint(min_width, max_width)
         y1 = random.randint(int(lower_bounded_height), int(higher_bounded_height - hole_height))
-        x1 = random.randint(left_bound, int(right_bound - hole_width))
+        x1 = random.randint(int(left_bound), int(right_bound - hole_width))
         y2 = y1 + hole_height
         x2 = x1 + hole_width
         holes.append((x1, y1, x2, y2))
